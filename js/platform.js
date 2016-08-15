@@ -5,11 +5,11 @@
 //定义一些变量
 var move_speed = 10;
 var min_btn_position = 0;
-var max_btn_position = 770;
+var max_btn_position = 540;
 var min_ball_left = 20;
 var min_ball_top = 20;
 var max_ball_left = 680;
-var max_ball_top = 560;
+var max_ball_top = 554;
 var t;//清楚小球的timeout
 var X_speed = 2;//小球水平方向的速度
 var Y_speed = 2;//小球垂直方向的速度
@@ -45,7 +45,7 @@ function btn_move_left() {
 function btn_move_right() {
     var button = document.getElementById("button");
     var btn_x = button.offsetLeft + move_speed;
-    if (btn_x > 740)btn_x = max_btn_position - 200;
+    if (btn_x > 540)btn_x = max_btn_position;
     button.style.left = btn_x + "px";
 }
 //初始化方块
@@ -152,14 +152,26 @@ function ball_move() {
     var ball = document.getElementById("ball");
     var ball_left = ball.offsetLeft;
     var ball_top = ball.offsetTop;
-    if (ball_left < min_ball_left || ball_left > max_ball_left)X_speed = -X_speed;//当小球到边界后，反弹
-    if (ball_top < min_ball_top)Y_speed = -Y_speed;
+    if (ball_left < min_ball_left ){
+        ball_left=min_ball_left*2-ball_left;
+        X_speed = -X_speed;
+    }//当小球到边界后，反弹
+    if(ball_left>max_ball_left){
+        ball_left=max_ball_left*2-ball_left;
+        X_speed=-X_speed;
+    }
+    if (ball_top < min_ball_top){
+        ball_top=min_ball_top*2-ball_top;
+        Y_speed = -Y_speed;
+    }
     //这里判断是否碰到木板
-    if (ball_top > max_ball_top - 30) {
+    if (ball_top > max_ball_top) {
         var btn = document.getElementById("button");
         var btn_x = btn.offsetLeft;
         if (ball_left >= btn_x && ball_left <= btn_x + 200) {
             Y_speed = -Y_speed;
+        }else {
+            alert("game_over!");
         }
     }
     ball.style.left = ball_left + X_speed + "px";
