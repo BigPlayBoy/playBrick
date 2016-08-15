@@ -169,6 +169,7 @@ function ball_move() {
         var btn = document.getElementById("button");
         var btn_x = btn.offsetLeft;
         if (ball_left >= btn_x && ball_left <= btn_x + 200) {
+            ball_top=max_ball_left*2-ball_top;
             Y_speed = -Y_speed;
         }else {
             alert("game_over!");
