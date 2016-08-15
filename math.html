@@ -10,10 +10,8 @@
     ###引入自己的js  ball  控制小球的动作
     ###platform 控制页面的初始化
     -->
-    <script src="js/ball.js"></script>
+    <script src="js/tools.js"></script>
     <script src="js/platform.js"></script>
-    <script src="js/brick.js"></script>
-
     <style type="text/css">
     </style>
     <script type="text/javascript">
@@ -28,7 +26,7 @@
 </div>
 <button onclick="btn_move_left();" type="button">向左移动</button>
 <button onclick="btn_move_right();" type="button">向右移动</button>
-<button ONCLICK="ball_move(X_speed,Y_speed);in_brick();">控制小球的运动点一下</button>
+<button ONCLICK="ball_move();in_brick();">控制小球的运动点一下</button>
 <div class="show_panel ">
     <p>显示器宽度为：<span id="client_width"></span></p>
     <br>

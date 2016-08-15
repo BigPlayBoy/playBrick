@@ -149,6 +149,7 @@
         }
 
         function keyDown(DnEvents) {
+            var k;
             if (ieFLG == 0) {
                 k = DnEvents.which;
             } else {
@@ -178,6 +179,7 @@
             }      //s
         }
         function keyUp(UpEvents) {
+            var k;
             if (ieFLG == 0) {
                 k = UpEvents.which;
             } else {
@@ -205,7 +207,7 @@
                     if (tmpkeyP >= 0) {
                         if (keyPr != 0) {
                             if (Math.abs(keyPr) < 15) {
-                                keyPr = keyPr * 1.2;
+                                keyPr = keyPr * 1;
                             }
                         } else {
                             keyPr = keyP;
