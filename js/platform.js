@@ -6,11 +6,11 @@
 var move_speed = 10;
 var min_btn_position = 0;
 var max_btn_position = 540;
-var min_ball_left = 20;
-var min_ball_top = 20;
-var max_ball_left = 680;
+var min_ball_left = 0;
+var min_ball_top = 0;
+var max_ball_left = 720;
 var max_ball_top = 554;
-var t;//清楚小球的timeout
+var t;//清除小球的timeout
 var X_speed = 2;//小球水平方向的速度
 var Y_speed = 2;//小球垂直方向的速度
 $(document).ready(function () {
@@ -152,16 +152,16 @@ function ball_move() {
     var ball = document.getElementById("ball");
     var ball_left = ball.offsetLeft;
     var ball_top = ball.offsetTop;
-    if (ball_left < min_ball_left ){
-        ball_left=min_ball_left*2-ball_left;
+    if (ball_left < min_ball_left) {
+        ball_left = min_ball_left * 2 - ball_left;
         X_speed = -X_speed;
     }//当小球到边界后，反弹
-    if(ball_left>max_ball_left){
-        ball_left=max_ball_left*2-ball_left;
-        X_speed=-X_speed;
+    if (ball_left > max_ball_left) {
+        ball_left = max_ball_left * 2 - ball_left;
+        X_speed = -X_speed;
     }
-    if (ball_top < min_ball_top){
-        ball_top=min_ball_top*2-ball_top;
+    if (ball_top < min_ball_top) {
+        ball_top = min_ball_top * 2 - ball_top;
         Y_speed = -Y_speed;
     }
     //这里判断是否碰到木板
@@ -169,10 +169,10 @@ function ball_move() {
         var btn = document.getElementById("button");
         var btn_x = btn.offsetLeft;
         if (ball_left >= btn_x && ball_left <= btn_x + 200) {
-            ball_top=max_ball_left*2-ball_top;
+            ball_top = max_ball_top * 2 - ball_top;
             Y_speed = -Y_speed;
-        }else {
-            alert("game_over!");
+        } else {
+            gameEnd();//这里并不会运行 为什么？
         }
     }
     ball.style.left = ball_left + X_speed + "px";
@@ -183,3 +183,7 @@ function ball_move() {
 
 
 //以上是关于小球的代码
+function gameEnd(){
+    clearTimeout(t);
+    alert("game OVER!");
+}
