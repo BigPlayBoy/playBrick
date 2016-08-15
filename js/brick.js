@@ -10,8 +10,8 @@ function in_brick() {
     var ball = document.getElementById("ball");
     var ball_left = ball.offsetLeft;
     var ball_top = ball.offsetTop;
-    var ball_right = ball_left + 40;
-    var ball_bottom = ball_top + 40;
+    var ball_right = ball_left + 20;
+    var ball_bottom = ball_top + 20;
     var ball_center_X=ball_left+10;//圆心的位置
     var ball_center_Y=ball_top+10;
 

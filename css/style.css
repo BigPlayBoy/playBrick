@@ -70,9 +70,9 @@ html, body {
     position: absolute;
     bottom: 32px;
     left: 20px;
-    width: 40px;
-    height: 40px;
-    border-radius: 20px;
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
     box-sizing: border-box;
     background-color: #3c763d;
 }
