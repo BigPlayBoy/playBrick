@@ -5,7 +5,7 @@
 //定义一些变量
 var move_speed = 10;
 var min_btn_position = 0;
-var max_btn_position = getWidth();
+var max_btn_position = 770;
 var min_ball_left = 20;
 var min_ball_top = 20;
 var max_ball_left = 680;
@@ -14,7 +14,7 @@ var t;//清楚小球的timeout
 var X_speed = 2;//小球水平方向的速度
 var Y_speed = 2;//小球垂直方向的速度
 $(document).ready(function () {
-//            alert("OK");
+    //alert("OK");
     $("input").keydown(function (event) {
         switch (event.which) {
             case 37:
@@ -34,17 +34,7 @@ function main() {
     create_brick();//生成方块
     show_info(getWidth(), getHeight());
 }
-function getWidth() {
-    return document.body.clientWidth;
-}
-function getHeight() {
-    return document.body.clientHeight;
-}
-function show_info(width, height, brick_num) {
-    document.getElementById("client_width").innerHTML = "" + width;
-    document.getElementById("client_height").innerHTML = "" + height;
-    document.getElementById("brick_num").innerHTML = "" + brick_num;
-}
+
 
 function btn_move_left() {
     var button = document.getElementById("button");
@@ -55,7 +45,7 @@ function btn_move_left() {
 function btn_move_right() {
     var button = document.getElementById("button");
     var btn_x = button.offsetLeft + move_speed;
-    if (btn_x > 1699)btn_x = max_btn_position - 200;
+    if (btn_x > 740)btn_x = max_btn_position - 200;
     button.style.left = btn_x + "px";
 }
 //初始化方块
@@ -125,11 +115,7 @@ function in_brick() {
     }
     setTimeout("in_brick()", 10);
 }
-function show_brick_info(myinfo, ball_left, ball_top) {
-    document.getElementById("is_in_brick").innerHTML = " " + myinfo;
-    document.getElementById("ball_left").innerHTML = " " + ball_left;
-    document.getElementById("ball_top").innerHTML = " " + ball_top;
-}
+
 function get_brick_id(x, y) {
     var brick_i = parseInt((x - 20) / 70);
     var brick_j = parseInt((y - 20) / 40);
@@ -140,16 +126,7 @@ function get_brick_id(x, y) {
     //if (brick_j < 1)brick_j = 1;
     return (brick_j ) * 10 + brick_i;
 }
-function show_brick_ids(T, R, B, L) {
-    document.getElementById("brick_id1").innerHTML = " " + T;
-    document.getElementById("brick_id2").innerHTML = " " + R;
-    document.getElementById("brick_id3").innerHTML = " " + B;
-    document.getElementById("brick_id4").innerHTML = " " + L;
-}
-function show_brick_ij(brick_i, brick_j) {
-    document.getElementById("brick_i").innerHTML = " " + brick_i;
-    document.getElementById("brick_j").innerHTML = " " + brick_j;
-}
+
 //上面是关于方块的代码
 //下面写关于小球的代码
 /**
@@ -170,7 +147,7 @@ function show_brick_ij(brick_i, brick_j) {
  * @param Y_speed
  */
 
-function ball_move(X_speed, Y_speed) {
+function ball_move() {
     clearTimeout(t);
     var ball = document.getElementById("ball");
     var ball_left = ball.offsetLeft;
@@ -188,13 +165,8 @@ function ball_move(X_speed, Y_speed) {
     ball.style.left = ball_left + X_speed + "px";
     ball.style.top = ball_top + Y_speed + "px";
     show_ball_info(X_speed, Y_speed, ball.style.left, ball.style.top);
-    t = setTimeout("ball_move(" + X_speed + "," + Y_speed + ")", 20);
+    t = setTimeout("ball_move()", 20);
 }
 
-function show_ball_info(X_speed, Y_speed, X_pos, Y_pos) {
-    document.getElementById("X_speed").innerHTML = "" + X_speed;
-    document.getElementById("Y_speed").innerHTML = "" + Y_speed;
-    document.getElementById("X_pos").innerHTML = "" + X_pos;
-    document.getElementById("Y_pos").innerHTML = "" + Y_pos;
-}
+
 //以上是关于小球的代码
